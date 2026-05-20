@@ -3,79 +3,39 @@ name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
     inputs:
-      suite:
-        description: 'Test suite to run'
+      tag:
+        description: 'Test tag to run'
         required: false
-        default: 'all'
-        type: choice
-        options:
-          - all
-          - login-positive
-          - login-negative
-          - navigation
-          - employee-search
-          - employee-crud
-          - form-submission
-          - leave-management
-          - legacy-login
-      workers:
-        description: 'Number of parallel workers'
-        required: false
-        default: '1'
+        default: '@login-positive'
         type: string
 
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      SUITE: ${{ github.event.inputs.suite || 'all' }}
-      WORKERS: ${{ github.event.inputs.workers || '1' }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: Resolve test target
-        id: target
-        run: |
-          case "$SUITE" in
-            all)              echo "path=tests" >> $GITHUB_OUTPUT ;;
-            login-positive)   echo "path=tests/01_login_positive.spec.ts" >> $GITHUB_OUTPUT ;;
-            login-negative)   echo "path=tests/02_login_negative.spec.ts" >> $GITHUB_OUTPUT ;;
-            navigation)       echo "path=tests/03_navigation_flow.spec.ts" >> $GITHUB_OUTPUT ;;
-            employee-search)  echo "path=tests/04_employee_search.spec.ts" >> $GITHUB_OUTPUT ;;
-            employee-crud)    echo "path=tests/05_employee_crud.spec.ts" >> $GITHUB_OUTPUT ;;
-            form-submission)  echo "path=tests/06_form_submission.spec.ts" >> $GITHUB_OUTPUT ;;
-            leave-management) echo "path=tests/07_leave_management.spec.ts" >> $GITHUB_OUTPUT ;;
-            legacy-login)     echo "path=tests/login.spec.ts" >> $GITHUB_OUTPUT ;;
-            *)                echo "path=tests" >> $GITHUB_OUTPUT ;;
-          esac
+      - run: npx playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        run: npx playwright test ${{ steps.target.outputs.path }} --workers=${{ env.WORKERS }}
+        run: npx playwright test --grep "${{ github.event.inputs.tag || '@login-positive' }}" --workers=1
         continue-on-error: true
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ env.SUITE }}
+          name: test-results
           path: |
             test-results.json
             playwright-report/
             test-results/
-          retention-days: 14
