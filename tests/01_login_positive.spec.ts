@@ -4,7 +4,7 @@
  */
 import { test, expect } from '@playwright/test';
 
-test.describe('Login - Positive Scenarios', () => {
+test.describe('Login - Positive Scenarios', { tag: '@login-positive' }, () => {
   
   test.beforeEach(async ({ page }) => {
     await page.goto('/web/index.php/auth/login');
