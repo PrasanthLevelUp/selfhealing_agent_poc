@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/apple/Documents/selfhealing_agent_poc/playwright.config.ts",
-    "rootDir": "/Users/apple/Documents/selfhealing_agent_poc/tests",
+    "configFile": "/home/ubuntu/github_repos/selfhealing_agent_poc/playwright.config.ts",
+    "rootDir": "/home/ubuntu/github_repos/selfhealing_agent_poc/tests",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -11,20 +11,20 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/apple/Documents/selfhealing_agent_poc/test-results",
+        "outputDir": "/home/ubuntu/github_repos/selfhealing_agent_poc/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/apple/Documents/selfhealing_agent_poc/tests",
+        "testDir": "/home/ubuntu/github_repos/selfhealing_agent_poc/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -54,60 +54,403 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.59.1",
-    "workers": 4,
+    "workers": 16,
     "webServer": null
   },
   "suites": [
     {
-      "title": "login.spec.ts",
-      "file": "login.spec.ts",
+      "title": "01_login_positive.spec.ts",
+      "file": "01_login_positive.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "User can login to OrangeHRM",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Login - Positive Scenarios",
+          "file": "01_login_positive.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
             {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
+              "title": "TC01-01: Valid login with Admin credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 9935,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-05-06T13:44:57.486Z",
+                  "timeout": 30000,
                   "annotations": [],
-                  "attachments": []
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8194,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:00.697Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
-              "status": "expected"
+              "id": "3ff7bdbf506f935cf501-4a15db160017863f7317",
+              "file": "01_login_positive.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "TC01-02: Verify login page elements are present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3821,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:08.950Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3ff7bdbf506f935cf501-4b881494f5a4bf689562",
+              "file": "01_login_positive.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "TC01-03: Login and verify user session",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9781,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.oxd-userdropdown-tab')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.oxd-userdropdown-tab')\u001b[22m\n\u001b[2m    - waiting for\" https://opensource-demo.orangehrmlive.com/web/index.php/auth/validate\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.oxd-userdropdown-tab')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.oxd-userdropdown-tab')\u001b[22m\n\u001b[2m    - waiting for\" https://opensource-demo.orangehrmlive.com/web/index.php/auth/validate\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index\"\u001b[22m\n\n    at /home/ubuntu/github_repos/selfhealing_agent_poc/tests/01_login_positive.spec.ts:36:32",
+                        "location": {
+                          "file": "/home/ubuntu/github_repos/selfhealing_agent_poc/tests/01_login_positive.spec.ts",
+                          "column": 32,
+                          "line": 36
+                        },
+                        "snippet": "  34 |     // Verify user dropdown shows logged-in user\n  35 |     const userDropdown = page.locator('.oxd-userdropdown-tab');\n> 36 |     await expect(userDropdown).toBeVisible();\n     |                                ^\n  37 |     await expect(userDropdown).toContainText('Admin');\n  38 |   });\n  39 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/ubuntu/github_repos/selfhealing_agent_poc/tests/01_login_positive.spec.ts",
+                            "column": 32,
+                            "line": 36
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.oxd-userdropdown-tab')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.oxd-userdropdown-tab')\u001b[22m\n\u001b[2m    - waiting for\" https://opensource-demo.orangehrmlive.com/web/index.php/auth/validate\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index\"\u001b[22m\n\n\n  34 |     // Verify user dropdown shows logged-in user\n  35 |     const userDropdown = page.locator('.oxd-userdropdown-tab');\n> 36 |     await expect(userDropdown).toBeVisible();\n     |                                ^\n  37 |     await expect(userDropdown).toContainText('Admin');\n  38 |   });\n  39 |\n    at /home/ubuntu/github_repos/selfhealing_agent_poc/tests/01_login_positive.spec.ts:36:32"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:12.781Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/ubuntu/github_repos/selfhealing_agent_poc/test-results/01_login_positive-Login----97b08-gin-and-verify-user-session/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/ubuntu/github_repos/selfhealing_agent_poc/test-results/01_login_positive-Login----97b08-gin-and-verify-user-session/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/ubuntu/github_repos/selfhealing_agent_poc/test-results/01_login_positive-Login----97b08-gin-and-verify-user-session/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/ubuntu/github_repos/selfhealing_agent_poc/test-results/01_login_positive-Login----97b08-gin-and-verify-user-session/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/ubuntu/github_repos/selfhealing_agent_poc/tests/01_login_positive.spec.ts",
+                        "column": 32,
+                        "line": 36
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3ff7bdbf506f935cf501-a38034317c7f6a09e2ed",
+              "file": "01_login_positive.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "TC01-04: Logout after successful login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8221,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:23.133Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3ff7bdbf506f935cf501-d9474c389d229534dc60",
+              "file": "01_login_positive.spec.ts",
+              "line": 40,
+              "column": 7
             }
-          ],
-          "id": "41d3fd2474a19feb00a1-17d568f42c46acab9367",
-          "file": "login.spec.ts",
-          "line": 3,
-          "column": 5
+          ]
+        }
+      ]
+    },
+    {
+      "title": "02_login_negative.spec.ts",
+      "file": "02_login_negative.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Login - Negative Scenarios",
+          "file": "02_login_negative.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC02-01: Login with invalid username",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 6387,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:00.684Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ed99000b4cdfee33c965-cd05cb175504111f2c1d",
+              "file": "02_login_negative.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "TC02-02: Login with invalid password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7771,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:07.132Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ed99000b4cdfee33c965-d9aad7b780a296286459",
+              "file": "02_login_negative.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "TC02-03: Login with empty username",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4179,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:14.913Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ed99000b4cdfee33c965-29f2e0d7ae5e529bba3a",
+              "file": "02_login_negative.spec.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "TC02-04: Login with empty password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4995,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:19.102Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ed99000b4cdfee33c965-8096cbaf5b89e9aba1b8",
+              "file": "02_login_negative.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "TC02-05: Login with both fields empty",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4075,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-20T11:34:24.107Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ed99000b4cdfee33c965-b3f1bee65c558d3c8e87",
+              "file": "02_login_negative.spec.ts",
+              "line": 52,
+              "column": 7
+            }
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-05-06T13:44:57.170Z",
-    "duration": 14086.471,
-    "expected": 1,
+    "startTime": "2026-05-20T11:34:00.268Z",
+    "duration": 31190.519,
+    "expected": 8,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
